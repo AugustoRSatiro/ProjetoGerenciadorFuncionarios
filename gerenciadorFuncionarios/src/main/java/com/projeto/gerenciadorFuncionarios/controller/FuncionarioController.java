@@ -21,14 +21,12 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioRepositorio funcRepositorio;
 
-    // Acessa o formulario
     @GetMapping("/form")
     public String funcionariosForm(Funcionario funcionario) {
 
         return "addFuncionario";
     }
 
-    // Adiciona novo funcionario
     @PostMapping("/add")
     public String novo(@Valid Funcionario funcionario, BindingResult result) {
         if (result.hasFieldErrors()) {
@@ -39,7 +37,6 @@ public class FuncionarioController {
         return "redirect:/home";
     }
 
-    // Acessa o formulario de edição
     @GetMapping("form/{id}")
     public String updateForm(Model model, @PathVariable(name = "id") int id) {
 
@@ -50,7 +47,6 @@ public class FuncionarioController {
         return "atualizarForm";
     }
 
-    // Atualiza funcionario
     @PostMapping("update/{id}")
     public String alterarProduto(@Valid Funcionario funcionario, BindingResult result, @PathVariable int id) {
 
